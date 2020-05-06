@@ -21,6 +21,18 @@ class LinkedList:
             print(temp.val,end=" ")
             temp = temp.next
         print()
+    def reverse(self):
+        left = None 
+        right = self.root  
+        while right!=None :
+            temp = right
+            right = right.next
+            temp.next = left 
+            left = temp 
+        self.root = left 
+
+		
+		
 ll = LinkedList()
 ll.insert (1)
 ll.insert (2)
@@ -29,4 +41,5 @@ ll.insert (4)
 ll.insert (5)
 ll.insert (6)
 ll.printList()
+ll.reverse()
 ll.printList()

@@ -7,6 +7,7 @@ You are given an array A of N integers and three integers B, C, and D. You have 
 Problem Constraints
 1 <= N <= 105 -10000 <= A[i], B, C, D <= 10000    
 '''
+#Approach 1
 class Solution:
     # @param A : list of integers
     # @param B : integer
@@ -29,3 +30,23 @@ class Solution:
             arr3[i] += A[i]*B    
         
         return max(arr3)
+
+
+#Approach 2
+def solve(A,B,C,D):
+    n = len(A)
+    dp = [[-5e9 for i in range(3)] for j in range(n+1)]
+    for i in range(1,n+1):
+        dp[i][0]=max(dp[i-1][0],A[i-1]*B)
+        dp[i][1]=max(dp[i-1][1],dp[i][0] + A[i-1]*C)
+        dp[i][2] = max(dp[i-1][2],dp[i][1] + A[i-1]*D)
+    return dp[n][2]
+    
+   
+A = [1, 5, -3, 4, -2]
+B = 2
+C = 1
+D = -1    
+ans  =solve(A,B,C,D)
+print(ans)
+ 		

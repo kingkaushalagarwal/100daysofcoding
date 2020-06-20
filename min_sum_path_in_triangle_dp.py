@@ -17,3 +17,12 @@ class Solution:
         #        print(*arr[i])
             return min(arr[-1])
         return findMin2(A)
+	#Bottom up approach using 1-D array from interviewBit hint section	
+	def Alternate(arr):
+            n = len(arr[-1])
+            dp=deepcopy(arr[-1])
+            for i in range(n-2,-1,-1):
+                for j in range(0,i+1):
+                    dp[j]= min(dp[j],dp[j+1]) + arr[i][j]
+            return dp[0]        
+        return Alternate(A)	

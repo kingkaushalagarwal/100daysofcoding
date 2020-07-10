@@ -1,4 +1,28 @@
 import sys
+#using i+j-1 as k which reduce 3 parameter and problem solved in 2-D array
+def Tabulation(A, B, C):
+    n = len(A)
+    m = len(B)
+    dp = [[0] * (m + 1) for i in range(n + 1)]
+    for i in range(n + 1):
+        for j in range(m + 1):
+            if i == 0 and j == 0:
+                dp[i][j] = 1
+            elif i == 0:
+                if B[j - 1] == C[j - 1]:
+                    dp[i][j] = dp[i][j - 1]
+            elif j == 0:
+                if A[i - 1] == C[i - 1]:
+                    dp[i][j] = dp[i - 1][j]
+            elif A[i - 1] != C[i + j - 1] and B[j - 1] == C[i + j - 1]:
+                dp[i][j] = dp[i][j - 1]
+            elif A[i - 1] == C[i + j - 1] and B[j - 1] != C[i + j - 1]:
+                dp[i][j] = dp[i - 1][j]
+            elif A[i - 1] == C[i + j - 1] and B[j - 1] == C[i + j - 1]:
+                dp[i][j] = dp[i - 1][j] or dp[i][j - 1]
+    return dp[n][m]
+
+
 def find(A,B,C,i,j,k):
     # print(i,j,k)
     if k<0 :

@@ -1,6 +1,5 @@
-#using fenwick tree to solve inversion of array count
 from copy import deepcopy
-from testInput import input
+# from testInput import input
 
 def getSum(bitree, i):
     summ = 0;

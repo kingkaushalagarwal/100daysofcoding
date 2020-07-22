@@ -1,77 +1,29 @@
-#using fenwick tree to solve inversion of array count
-from copy import deepcopy
-from testInput import input
-def getSum(bitree, i):
-    summ = 0;
-    i += 1
-    while i > 0:
-        summ += bitree[i]
-        i -= i & (-i)
-    return summ
+# Python program showing
+# abstract properties
+
+import abc
+from abc import ABC, abstractmethod
 
 
-def update(bitree, n, i, val):
-    i += 1
-    while i <= n:
-        bitree[i] += val
-        i += i & (-i)
+class parent(ABC):
+    @abc.abstractproperty
+    def geeks(self):
+        return "parent class"
 
 
-def construct(arr):
-    n = len(arr)
-    bitree = [0] * (n + 1)
-    for i in range(n):
-        update(bitree, n, i , arr[i])
-    return bitree
+class child(parent):
 
-n,m = map(int,input().split())
-arr = list(map(int,input().split()))
-bitree = construct(arr)
+    @property
+    def geeks(self):
+        return "child class"
 
-def binarySearch2(bitree,left,right,value):
-    if left<=right:
-        mid = (left+right)//2
-        summ = getSum(bitree,mid)
-        if summ>value:
-            return binarySearch2(bitree,left,mid-1,value)
-        elif summ<value:
-            return binarySearch2(bitree,mid+1,right,value)
-        else:
-            # print("ans ",mid)
-            return mid
-    return -1
 
-for i in range(m):
-    query = list(map(int,input().split()))
-    if query[0]==1:
-        ind = query[1]-1
-        curr_val = query[2]
-        prev_val = arr[ind]
-        update(bitree,n,ind,curr_val-prev_val)
-        arr[ind]= curr_val
-    elif query[0]==2:
-        val=query[1]
-        if bitree[-1]==val:
-            print("Found",len(arr))
-        else:
-            l = 0
-            r = n-1
-            mid=0
-            flag = 0
-            while (l <= r):
-                mid = l + (r - l) //2;
-                ans = getSum(bitree,mid);
-                if (ans > val):
-                    r=mid-1
-                elif (ans <val):
-                    l=mid+1
-                else:
-                    pos=mid
-                    flag=1
-                    break
+try:
+    r = parent()
+    print(r.geeks)
+except Exception as err:
+    print(err)
 
-            if (flag):
-                print("Found",pos+1);
-            else:
-                print("Not Found");
-
+r = child()
+print(r.geeks)
+int

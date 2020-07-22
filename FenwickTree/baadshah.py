@@ -3,7 +3,7 @@
 from copy import deepcopy
 def getSum(bitree, i):
     summ = 0;
-    i += 1
+    i +=
     while i > 0:
         summ += bitree[i]
         i -= i & (-i)

@@ -1,5 +1,5 @@
 #interview bit
-#regular expression matching O(1) solution
+#regular expression matching O(n) solution
 def isMatch(A,B):
     n1 = len(A)
     n2 = len(B)

@@ -16,7 +16,8 @@ class Solution:
 	        return self.bruteForce(string,new_pattern,i-1,j-1)
 	    elif new_pattern[j]=='*':
 	        return self.bruteForce(string,new_pattern,i-1,j-1) or self.bruteForce(string,new_pattern,i-1,j)
-	    else:return False     
+	    else:
+            return False
     def optimise(self,string,pattern):
         m = len(string)
         n = len(pattern)

@@ -44,3 +44,5 @@ for _ in range(int(input())):
     lcs = dp[-1][-1]
 
     print(n + m - lcs)
+
+# mdns4_minimal[NOTFOUND =return]

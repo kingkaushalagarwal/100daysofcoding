@@ -1,17 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun  2 00:52:21 2020
-
-@author: hp
-"""
-
-def input():
-    global f;
-    return f.readline().strip()
-#Driver Code
-f=open("D:/interview_bits/100daysofcoding/testcase/sample_input.txt",'r')
+from testInput import input
 for t in range(int(input())):
-    string = input()
+    string = input().split()
+    string = ''.join(list(string)+list(string))
     n = len(string)
     dp = [[0]*(n) for i in range(n)]
     for i in range(n):
@@ -27,8 +17,9 @@ for t in range(int(input())):
                     val = dp[j+1][j+i-1] + 2
 
                 dp[j][j+i] = max(dp[j][j+i-1],dp[j+1][j+i],val)
-    print(dp[0][-1])
-    for i in range(len(dp)):
-        print(dp[i])
+    # print(string)
+    print(string, len(string),dp[0][-1])
+    # for i in range(len(dp)):
+    #     print(dp[i])
 #bbabcbcab
 #abbaab

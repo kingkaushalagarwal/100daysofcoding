@@ -60,7 +60,7 @@ class Solution:
                 queue.append(i)
         ans = []
         while len(queue) != 0:
-            u = queue.pop()
+            u = queue.popleft()
             ans.append(u)
             for v in graph[u]:
                 indegree[v] -= 1

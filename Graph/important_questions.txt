@@ -1,0 +1,5 @@
+1- minimum cost to visit the museum
+2- tournament winners
+3- stepping number
+4- rook movement
+5- smallest distance from all building

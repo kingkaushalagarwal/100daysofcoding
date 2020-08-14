@@ -72,9 +72,6 @@ for t in range(int(input())):
     arr = list(map(int,input().split()))
     freq = defaultdict(int)
     ans = [0] * (n + 1)
-    # print("freq ", freq)
-    # for i in range(len(combination)):
-    #     print(combination[i])
     counter = Counter(arr)
     if len(counter)==n:
         for i in range(1, n + 1):

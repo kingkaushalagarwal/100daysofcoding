@@ -11,15 +11,16 @@ def justSmallLeft(arr):
                 ind = stack.pop()
                 ans[ind]=i
             stack.append(i)
+
     while len(stack)!=0:
         ind = stack.pop()
         ans[ind]=-1
     return ans
 def justSmallRight(arr):
-    n = len(A)
+    n = len(arr)
     ans = [0]*n
     stack =[]
-    for i in range(len(A)-1,-1,-1):
+    for i in range(len(arr)-1,-1,-1):
         if len(stack)==0 or arr[stack[-1]]<=arr[i]:
             stack.append(i)
         else:
@@ -51,5 +52,16 @@ def solve(A):
         maxx = max(maxx,area)
     return maxx
 A = [2, 1, 5, 6, 2, 3]
-ans = solve(A)
-print(ans)
+
+A =[[0, 1, 1],
+  [1, 0, 0],
+  [1, 0, 0],
+  [1, 0, 0],
+  [1, 0, 0],
+  [1, 1, 1],
+  [0, 1, 0]]
+print(solve([0,1,1]))
+# for i in range(len(A)):
+#     print(solve(A[i]))
+# ans = solve(A)
+# print(ans)

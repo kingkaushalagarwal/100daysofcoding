@@ -1,48 +1,40 @@
+#Interview Bit
+#Good question
 class Solution:
     # @param A : list of integers
     # @return an integer
-    def solve(self, arr):
-        stack = []
-        count = 0
-        for i in  range(len(arr)):
-            if len(stack)==0:
+    def solve(self, A):
+        n = len(A)
+        stack =[]
+        count =0
+        for  i in range(len(A)):
+            if len(stack)==0 or A[stack[-1]]>A[i]:
                 stack.append(i)
-                if i!=0:
-                    count+=1
             else:
-                ind =  stack[-1]
-                if arr[ind]>arr[i]:
-                    stack.append(i)
+                if stack[-1]+1==i:
+                    stack.pop()
+                while stack and A[stack[-1]]==A[i]:
+                    stack.pop()
+                while stack and A[stack[-1]]<=A[i]:
+                    stack.pop()
                     count+=1
-                # elif arr[ind]==arr[i]:
-                #     continue
-                else:
-                    prev = i
-                    flag = False
-                    while stack and arr[stack[-1]] <= arr[i]:
-                        ind = stack.pop()
-                        if (ind+1)!=prev:
-                            count+=1
-                        prev = ind
-                        flag = True
-                    if flag:
-                        count+=1
-                    stack.append(i)
-
-        if stack:
-            prev= stack[-1]
-            stack.pop()
-        while stack:
-            if stack[-1]+1==prev:
-                prev = stack.pop()
+                stack.append(i)
+        stack =[]
+        for i in range(len(A)-1,-1,-1):
+            if len(stack)==0 or A[stack[-1]]>A[i]:
+                stack.append(i)
             else:
-                prev = stack.pop()
+                if stack[-1]-1==i:
+                    stack.pop()
+                while stack and A[stack[-1]]==A[i]:
+                    stack.pop()
+                while stack and A[stack[-1]]<=A[i]:
+                    stack.pop()
+                    count+=1
+                stack.append(i)
+        prev = A[0]
+        for i in range(1,len(A)):
+            if prev!=A[i]:
                 count+=1
+            prev = A[i]
         return count
-
-
-
-
-A = [ 120, 131, 101, 30, 17, 127, 55, 35, 45, 50, 64, 62, 96, 92, 63, 76, 25, 52, 85, 75 ]
-ans  = Solution().solve(A)
-print(ans)

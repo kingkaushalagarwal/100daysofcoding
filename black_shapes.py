@@ -17,16 +17,16 @@ class Solution:
 	            self.DFS(A,r,c,n,m)
 	            
 	def black(self,arr ):
-	    A =[]
-	    for x in arr:
-	        A.append(list(x))
-        n = len(A)
-        m = len(A[0])
-        count = 0
-        for i in range(n):
-            for j in range(m):
-                if A[i][j]=='X':
-                    count += 1
-                    self.DFS(A,i,j,n,m)
-        return count            
+		A =[]
+		for x in arr:
+			A.append(list(x))
+		n = len(A)
+		m = len(A[0])
+		count = 0
+		for i in range(n):
+			for j in range(m):
+				if A[i][j]=='X':
+					count += 1
+					self.DFS(A,i,j,n,m)
+		return count
                     

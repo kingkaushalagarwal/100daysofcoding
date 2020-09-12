@@ -1,36 +1,28 @@
 from testInput import input
-for t in range(int(input())):
-    n, a, b, c = map(int, input().split())
-    print(n,a,b,c)
-    d1 = a - c
-    d2 = b - c
-    if (d1 + d2 + c) > n or c > a or c > b:
-        print("Case #", t + 1, ": ", "IMPOSSIBLE", sep="")
-    else:
-        ans = [0] * n
-        middle = n - c + 1
-        if a==c or b == c:
-            k = 1
-            for i in range(n-1,-1,-1):
-                # print(i,n-c,ans)
-                if n-c<=i:
-                    ans[i] = middle
-                else:
-                    ans[i]=k
-                    k +=1
-            if a==c:
-                ans = ans[::-1]
+def getShiftedString(s,l,r):
+    if len(s)==0:
+        return ""
+    if l==r:
+        return s
+    n = len(s)
+    if l>r:
+        l = l-r
+        l = l%n
+        if l==0:
+            return s
         else:
-            d=d1
-            print(middle,d)
-            for i in range(d1,c):
-                if i<d1:
-                    ans [i]=d
-                    d-=1
-                elif i<(d1+c):
-                    ans[i]=middle
-            # for i in range(d1+c,n):
-            #     ans[i]=i
-        print("Case #",t+1,": ",sep="",end="")
-        print(*ans)
-
+            return s[l:]+s[:l]
+    else:
+        r = r-l
+        r = r%n
+        if r==0:
+            return s
+        else:
+            return s[-r:]+s[:-r]
+# # while(True):
+# for i in range(int(input())):
+#     s = input()
+#     l,r = map(int,input().split())
+#     ans = getShiftedString(s,l,r)
+#     print(s,l,r)
+#     print(ans)

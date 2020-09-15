@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution{
+class Solution{
 
     public int wordBreak(String s, ArrayList<String> B){
         boolean [] t = new boolean[s.length()+1];

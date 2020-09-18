@@ -62,7 +62,8 @@ public class CompareVersionNumbers {
                     return -1;
                 j+=1;
             }
-
+            int num =10;
+            String str = String.valueOf(num);
             return 0;
         }
     }

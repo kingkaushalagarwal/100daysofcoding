@@ -27,8 +27,8 @@ def find(arr, n):
             not_set_subarray += (c * (c + 1)) // 2
             if len(vector) == 1:
                 not_set_subarray = 1
-            value= (total_subarray            ans+=value
- - not_set_subarray) * (2 ** i)
+            value= (total_subarray - not_set_subarray) * (2 ** i)
+            ans+=value
             print(i,vector,value)
     return ans
 

@@ -25,6 +25,7 @@ def ncr1(n,r):
         num = num*(n-i)
         den = den*(i+1)
     return num//den
+
 def ncr(n, r, p):
     # initialize numerator
     # and denominator

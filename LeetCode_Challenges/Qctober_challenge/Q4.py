@@ -3,8 +3,6 @@ from typing import List
 class Solution:
     def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort()
-        print(intervals)
-
         c = 1
         s = intervals[0][0]
         e = intervals[0][1]
